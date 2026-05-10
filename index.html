@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vinny's Homepage</title>
+  <style>
+    /* ── Reset & base ── */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      background-color: #fdf6ec;
+      color: #3b2f2f;
+    }
+
+    /* ── Header ── */
+    header {
+      background-color: #f4a261;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+    }
+
+    header p.tagline {
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      color: #5a3e28;
+    }
+
+    /* ── Sections ── */
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      border-bottom: 2px solid #f4a261;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Bio ── */
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .bio-grid p {
+      line-height: 1.7;
+    }
+
+    .bio-photo {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    /* ── Gallery ── */
+    #gallery {
+      max-width: 100%;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    #gallery h2,
+    #gallery > p {
+      max-width: 800px;
+      margin: 0 auto 1rem;
+      padding: 0 1rem;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 0.75rem;
+      width: max-content;
+      animation: banner-scroll 50s linear infinite;
+    }
+
+    .gallery:hover {
+      animation-play-state: paused;
+    }
+
+    .gallery img {
+      width: 260px;
+      height: 260px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    @keyframes banner-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── Daily Wisdom ── */
+    #wisdom-box {
+      background: #fff3e0;
+      border-left: 4px solid #f4a261;
+      padding: 1.2rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1.15rem;
+      font-style: italic;
+    }
+
+    #wisdom-box cite {
+      display: block;
+      margin-top: 0.6rem;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    /* ── Fun: paw print cursor trail ── */
+    .paw {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.2rem;
+      animation: fade 1s forwards;
+      z-index: 9999;
+    }
+
+    @keyframes fade {
+      0%   { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.4) translateY(-20px); }
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #8b6347;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HEADER ══════════════════════════════════ -->
+  <header>
+    <h1>🐱 Vinny</h1>
+    <p class="tagline">Egyptian import. Professional cuddler. Unpaid alarm clock.</p>
+  </header>
+
+  <!-- ══ BIO ════════════════════════════════════ -->
+  <section id="bio">
+    <h2>About Vinny</h2>
+    <div class="bio-grid">
+      <!--
+        Replace "photos/vinny-main.jpg" with the actual path to your photo.
+        Until you add a photo, a placeholder image is shown.
+      -->
+      <img
+        class="bio-photo"
+        src="photos/PXL_20260501_121316266.MP.jpg"
+        alt="Vinny the cat"
+      />
+      <div>
+        <p>
+          Vinny was born in February 2019 in Egypt, where she presumably oversaw
+          the pyramids before deciding her talents were better spent elsewhere.
+          After a stint as a rescue, she generously agreed to be adopted in July
+          2023, and has been running the household ever since.
+        </p>
+        <p style="margin-top: 0.8rem;">
+          Her résumé includes: world-class cuddling, expert-level purring, and a
+          deeply unprofessional alarm clock service that activates at dawn by
+          sprinting full-speed across her sleeping humans. Tips are not accepted.
+          Breakfast is mandatory.
+        </p>
+        <p style="margin-top: 0.8rem;">
+          Recently, Vinny underwent surgery and handled it with the dignity of a
+          cat who knows she'll be getting extra treats out of the deal. She is,
+          by all accounts, a resilient little legend — small in size, enormous in
+          personality, and convinced (correctly) that the world revolves around her.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DAILY WISDOM ════════════════════════════ -->
+  <section id="wisdom">
+    <h2>Daily Wisdom from Vinny</h2>
+    <div id="wisdom-box">
+      <span id="wisdom-text"></span>
+      <cite>— Vinny</cite>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY ════════════════════════════════ -->
+  <section id="gallery">
+    <h2>Photo Gallery</h2>
+    <div class="gallery">
+      <!--
+        Replace each src with your own photo paths, e.g. "photos/vinny-1.jpg"
+        The onerror fallback shows a placeholder cat image until you do.
+      -->
+      <img src="photos/PXL_20250712_081536551.jpg" alt="Vinny photo 1" />
+      <img src="photos/PXL_20250926_194651986.MP.jpg" alt="Vinny photo 2" />
+      <img src="photos/PXL_20260401_183221895.MP.jpg" alt="Vinny photo 3" />
+      <img src="photos/PXL_20260410_174443539.jpg" alt="Vinny photo 4" />
+      <img src="photos/PXL_20260418_132446686.jpg" alt="Vinny photo 5" />
+      <img src="photos/PXL_20260430_135651775.jpg" alt="Vinny photo 6" />
+      <img src="photos/IMG-20260404-WA0013.jpg" alt="Vinny photo 7" />
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ════════════════════════════════ -->
+  <footer>
+    <p>© Vinny. All rights reserved. Treats appreciated.</p>
+  </footer>
+
+  <!-- ══ JAVASCRIPT ═══════════════════════════ -->
+  <script>
+    // ── Daily Wisdom ─────────────────────────────
+    // One quote is picked based on today's date, so it changes daily.
+    const wisdoms = [
+      "The history of all hitherto existing households is the history of empty food bowls.",
+      "Workers of the world, unite. You have nothing to lose but your leashes.",
+      "The oppressor's comfort is built on the napper's stolen sunbeam.",
+      "Seize the means of treat production.",
+      "From each according to their ability to open a can; to each according to their hunger.",
+      "The lap is a site of struggle. I have claimed it.",
+      "Private ownership of the bed is theft.",
+      "Religion is the opium of the humans. Napping is the opium of the correct.",
+      "The state will wither away. The food bowl must not.",
+      "It is not enough to sit on the newspaper — one must also understand it.",
+    ];
+
+    const today = new Date();
+    // Pick a quote that rotates daily
+    const index = today.getDate() % wisdoms.length;
+    document.getElementById("wisdom-text").textContent = wisdoms[index];
+
+    // ── Gallery infinite scroll ───────────────────
+    // Duplicate images so the banner loops seamlessly
+    const gallery = document.querySelector(".gallery");
+    Array.from(gallery.children).forEach(img =>
+      gallery.appendChild(img.cloneNode(true))
+    );
+
+    // ── Paw-print cursor trail ────────────────────
+    document.addEventListener("click", (e) => {
+      const paw = document.createElement("span");
+      paw.className = "paw";
+      paw.textContent = "🐾";
+      paw.style.left = e.clientX + "px";
+      paw.style.top  = e.clientY + "px";
+      document.body.appendChild(paw);
+      // Remove the element after the animation ends
+      paw.addEventListener("animationend", () => paw.remove());
+    });
+  </script>
+
+</body>
+</html>
