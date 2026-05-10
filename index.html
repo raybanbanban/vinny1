@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vinny's Homepage</title>
+  <title>Vinny's Homepage | Vinny的主页</title>
   <style>
     /* ── Reset & base ── */
     * {
@@ -16,6 +16,36 @@
       font-family: Georgia, serif;
       background-color: #fdf6ec;
       color: #3b2f2f;
+    }
+
+    /* ── Language toggle ── */
+    .lang-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+      display: flex;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid #f4a261;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .lang-toggle button {
+      padding: 0.35rem 0.85rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-family: Georgia, serif;
+      background: #fff3e0;
+      color: #5a3e28;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .lang-toggle button.active {
+      background: #f4a261;
+      color: #fff;
+      font-weight: bold;
     }
 
     /* ── Header ── */
@@ -61,6 +91,294 @@
     .bio-grid p {
       line-height: 1.7;
     }
+
+    .bio-photo {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    /* ── Gallery ── */
+    #gallery {
+      max-width: 100%;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    #gallery h2,
+    #gallery > p {
+      max-width: 800px;
+      margin: 0 auto 1rem;
+      padding: 0 1rem;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 0.75rem;
+      width: max-content;
+      animation: banner-scroll 50s linear infinite;
+    }
+
+    .gallery:hover {
+      animation-play-state: paused;
+    }
+
+    .gallery img {
+      width: 260px;
+      height: 260px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    @keyframes banner-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── Daily Wisdom ── */
+    #wisdom-box {
+      background: #fff3e0;
+      border-left: 4px solid #f4a261;
+      padding: 1.2rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1.15rem;
+      font-style: italic;
+    }
+
+    #wisdom-box cite {
+      display: block;
+      margin-top: 0.6rem;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    /* ── Fun: paw print cursor trail ── */
+    .paw {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.2rem;
+      animation: fade 1s forwards;
+      z-index: 9999;
+    }
+
+    @keyframes fade {
+      0%   { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.4) translateY(-20px); }
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #8b6347;
+      font-size: 0.9rem;
+    }
+
+    /* ── Language visibility ── */
+    [data-lang] { display: none; }
+    body.lang-en [data-lang="en"] { display: revert; }
+    body.lang-zh [data-lang="zh"] { display: revert; }
+
+    /* inline spans need inline display */
+    span[data-lang] { display: none; }
+    body.lang-en span[data-lang="en"] { display: inline; }
+    body.lang-zh span[data-lang="zh"] { display: inline; }
+  </style>
+</head>
+<body class="lang-en">
+
+  <!-- ══ LANGUAGE TOGGLE ══════════════════════════ -->
+  <div class="lang-toggle">
+    <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+    <button id="btn-zh" onclick="setLang('zh')">中文</button>
+  </div>
+
+  <!-- ══ HEADER ══════════════════════════════════ -->
+  <header>
+    <h1>🐱 Vinny</h1>
+    <p class="tagline">
+      <span data-lang="en">Egyptian import. Professional cuddler. Unpaid alarm clock.</span>
+      <span data-lang="zh">来自埃及的进口猫。职业撒娇专家。无薪闹钟服务。</span>
+    </p>
+  </header>
+
+  <!-- ══ BIO ════════════════════════════════════ -->
+  <section id="bio">
+    <h2>
+      <span data-lang="en">About Vinny</span>
+      <span data-lang="zh">关于Vinny</span>
+    </h2>
+    <div class="bio-grid">
+      <img
+        class="bio-photo"
+        src="PXL_20260501_121316266.MP.jpg"
+        alt="Vinny the cat"
+      />
+      <div>
+        <p data-lang="en">
+          Vinny was born in February 2019 in Egypt, where she presumably oversaw
+          the pyramids before deciding her talents were better spent elsewhere.
+          After a stint as a rescue, she generously agreed to be adopted in July
+          2023, and has been running the household ever since.
+        </p>
+        <p data-lang="zh">
+          Vinny于2019年2月出生于埃及，据说她曾亲自监督金字塔的日常事务，
+          后来决定将才华用在更值得的地方。经历了一段流浪猫生涯后，
+          她大方地同意于2023年7月被领养，此后便一直掌管着整个家庭。
+        </p>
+
+        <p data-lang="en" style="margin-top: 0.8rem;">
+          Her résumé includes: world-class cuddling, expert-level purring, and a
+          deeply unprofessional alarm clock service that activates at dawn by
+          sprinting full-speed across her sleeping humans. Tips are not accepted.
+          Breakfast is mandatory.
+        </p>
+        <p data-lang="zh" style="margin-top: 0.8rem;">
+          她的简历包括：世界级的撒娇技能、专业级的咕噜声，
+          以及一项极不专业的闹钟服务——每天黎明时分以全速冲刺穿越熟睡主人的身体。
+          不接受小费，早餐必须准时提供。
+        </p>
+
+        <p data-lang="en" style="margin-top: 0.8rem;">
+          Recently, Vinny underwent surgery and handled it with the dignity of a
+          cat who knows she'll be getting extra treats out of the deal. She is,
+          by all accounts, a resilient little legend — small in size, enormous in
+          personality, and convinced (correctly) that the world revolves around her.
+        </p>
+        <p data-lang="zh" style="margin-top: 0.8rem;">
+          最近，Vinny接受了一次手术，她以一只深知自己将获得额外零食的猫
+          特有的优雅风度从容度过了一切。所有人都认为，她是一只坚韧的小传奇——
+          体型娇小，个性巨大，并且深信（没错）整个世界都围着她转。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DAILY WISDOM ════════════════════════════ -->
+  <section id="wisdom">
+    <h2>
+      <span data-lang="en">Daily Wisdom from Vinny</span>
+      <span data-lang="zh">Vinny的每日智慧</span>
+    </h2>
+    <div id="wisdom-box">
+      <span id="wisdom-text"></span>
+      <cite>— Vinny</cite>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY ════════════════════════════════ -->
+  <section id="gallery">
+    <h2>
+      <span data-lang="en">Photo Gallery</span>
+      <span data-lang="zh">照片画廊</span>
+    </h2>
+    <div class="gallery">
+      <img src="PXL_20250712_081536551.jpg" alt="Vinny photo 1" />
+      <img src="PXL_20250926_194651986.MP.jpg" alt="Vinny photo 2" />
+      <img src="PXL_20260401_183221895.MP.jpg" alt="Vinny photo 3" />
+      <img src="PXL_20260410_174443539.jpg" alt="Vinny photo 4" />
+      <img src="PXL_20260418_132446686.jpg" alt="Vinny photo 5" />
+      <img src="PXL_20260430_135651775.jpg" alt="Vinny photo 6" />
+      <img src="IMG-20260404-WA0013.jpg" alt="Vinny photo 7" />
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ════════════════════════════════ -->
+  <footer>
+    <p>
+      <span data-lang="en">© Vinny. All rights reserved. Treats appreciated.</span>
+      <span data-lang="zh">© Vinny。版权所有。欢迎投喂零食。</span>
+    </p>
+  </footer>
+
+  <!-- ══ JAVASCRIPT ═══════════════════════════ -->
+  <script>
+    // ── Language toggle ───────────────────────────
+    function setLang(lang) {
+      document.body.className = 'lang-' + lang;
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+      localStorage.setItem('lang', lang);
+      updateWisdom(lang);
+    }
+
+    // ── Daily Wisdom ─────────────────────────────
+    const wisdoms = [
+      {
+        en: "The history of all hitherto existing households is the history of empty food bowls.",
+        zh: "迄今为止所有家庭的历史，就是食盆空空的历史。"
+      },
+      {
+        en: "Workers of the world, unite. You have nothing to lose but your leashes.",
+        zh: "全世界的猫咪，联合起来。你们失去的只是你们的项圈。"
+      },
+      {
+        en: "The oppressor's comfort is built on the napper's stolen sunbeam.",
+        zh: "压迫者的舒适，建立在偷走午睡者阳光的基础之上。"
+      },
+      {
+        en: "Seize the means of treat production.",
+        zh: "夺取零食的生产资料。"
+      },
+      {
+        en: "From each according to their ability to open a can; to each according to their hunger.",
+        zh: "各尽其开罐之能，各取其饥饿之需。"
+      },
+      {
+        en: "The lap is a site of struggle. I have claimed it.",
+        zh: "大腿是斗争的场所，我已将其占领。"
+      },
+      {
+        en: "Private ownership of the bed is theft.",
+        zh: "床的私有制是盗窃。"
+      },
+      {
+        en: "Religion is the opium of the humans. Napping is the opium of the correct.",
+        zh: "宗教是人类的鸦片，午睡是正确者的鸦片。"
+      },
+      {
+        en: "The state will wither away. The food bowl must not.",
+        zh: "国家终将消亡，食盆决不能空。"
+      },
+      {
+        en: "It is not enough to sit on the newspaper — one must also understand it.",
+        zh: "仅仅坐在报纸上是不够的——还必须理解它。"
+      },
+    ];
+
+    const today = new Date();
+    const index = today.getDate() % wisdoms.length;
+
+    function updateWisdom(lang) {
+      document.getElementById("wisdom-text").textContent = wisdoms[index][lang];
+    }
+
+    // ── Init ──────────────────────────────────────
+    const savedLang = localStorage.getItem('lang') || 'en';
+    setLang(savedLang);
+
+    // ── Gallery infinite scroll ───────────────────
+    const gallery = document.querySelector(".gallery");
+    Array.from(gallery.children).forEach(img =>
+      gallery.appendChild(img.cloneNode(true))
+    );
+
+    // ── Paw-print cursor trail ────────────────────
+    document.addEventListener("click", (e) => {
+      const paw = document.createElement("span");
+      paw.className = "paw";
+      paw.textContent = "🐾";
+      paw.style.left = e.clientX + "px";
+      paw.style.top  = e.clientY + "px";
+      document.body.appendChild(paw);
+      paw.addEventListener("animationend", () => paw.remove());
+    });
+  </script>
+
+</body>
+</html>
 
     .bio-photo {
       width: 100%;
